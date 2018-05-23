@@ -27,11 +27,11 @@ export class HelloIonicPage {
         text: 'Delayed ILocalNotification',
         trigger: {
           at: new Date(new Date().getTime()),
-          vibrate: this.vibration.vibrate(3000)
+          vibrate: this.vibration.vibrate(5000)
         },
         led: 'FF0000',
         icon: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/24/bell-icon.png',
-        sound: null
+        sound: this.platform.is('android') ? 'file://assets/sounds/Warning.mp3': null,
      });
     });
   }
