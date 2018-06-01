@@ -14,6 +14,8 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { RemoteService } from '../providers/remote-service/remote-service';
 import { HttpModule } from '@angular/http';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -24,6 +26,7 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

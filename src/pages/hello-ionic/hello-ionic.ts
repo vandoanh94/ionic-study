@@ -15,7 +15,7 @@ export class HelloIonicPage {
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController) {
-    Observable.interval(2000).subscribe(x => {
+    Observable.interval(5000).subscribe(x => {
       this.getLightState();
     });
   }
