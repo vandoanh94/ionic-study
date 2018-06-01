@@ -13,7 +13,7 @@ export class HelloIonicPage {
   light = "null";
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService) {
-    Observable.interval().subscribe(x => {
+    Observable.interval(2000).subscribe(x => {
       this.getLightState();
     });
     
