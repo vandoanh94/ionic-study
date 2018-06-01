@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {Platform} from 'ionic-angular'
+import { Platform, NavController} from 'ionic-angular'
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Vibration } from '@ionic-native/vibration';
 import { RemoteService } from '../../providers/remote-service/remote-service';
-import {Observable} from 'rxjs/Rx';
+import { Observable} from 'rxjs/Rx';
+import { ListPage } from '../list/list';
 
 @Component({
   selector: 'page-hello-ionic',
@@ -12,11 +13,11 @@ import {Observable} from 'rxjs/Rx';
 export class HelloIonicPage {
   light = "null";
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
-  private vibration:Vibration,private remoteService : RemoteService) {
+  private vibration:Vibration,private remoteService : RemoteService,
+  public navCtrl: NavController) {
     Observable.interval(2000).subscribe(x => {
       this.getLightState();
     });
-    
   }
   getLightState(){
     this.remoteService.getLightState().subscribe((data)=>{
@@ -29,6 +30,9 @@ export class HelloIonicPage {
     let hideFooterTimeout = setTimeout( () => {
       this.notification();
     }, TIME_IN_MS);
+  }
+  btnListDevices() {
+    this.navCtrl.push(ListPage);
   }
 
   notification(){
