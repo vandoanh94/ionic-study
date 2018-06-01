@@ -7,20 +7,25 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.items = [
+      {
+        'title': 'Angular',
+        'icon': 'angular',
+        'color': '#E63135'
+      },
+      {
+        'title': 'CSS3',
+        'icon': 'css3',
+        'color': '#0CA9EA'
+      },
+      {
+        'title': 'HTML5',
+        'icon': 'html5',
+        'color': '#F46529'
+      },
+    ]
   }
 }
