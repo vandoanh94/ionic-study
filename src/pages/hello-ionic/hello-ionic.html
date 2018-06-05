@@ -3,14 +3,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    <ion-title>SMART HOME</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="my-background" padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <div text-center class="my-background">
+    <h3>Welcome to your</h3>
+  </div>
+  
 
   <p>
     This starter project is our way of helping you get a functional app running in record time.
@@ -18,17 +21,13 @@
   <p>
     Follow along on the tutorial section of the Ionic docs!
   </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
-  <button ion-button (click) = "btnPushClick()">PUSH</button>
+
   <button ion-button (click) = "btnListDevices()">List Devices</button>
 
-  <h2>API</h2>
-  <ion-list>
-      <ion-item>
-      {{ light }}
-      </ion-item>
-  </ion-list>
+ <!--  <h2>API</h2>
+  <ion-item>
+    {{ light }}
+  </ion-item> -->
+
 
 </ion-content>

@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <button ion-button (click) = "btnUpdateItems()">Update Items</button>
   <ion-list>
     <li ion-item *ngFor="let item of items">
       <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}" item-start></ion-icon>
@@ -16,6 +15,4 @@
       <ion-toggle checked="false"></ion-toggle>
     </li>
   </ion-list>
-  <button ion-button (click) = "btnAddItem()">Add Item</button>
-  <button ion-button (click) = "btnDeleteItem()">Delete Item</button>
 </ion-content>
