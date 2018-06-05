@@ -25,12 +25,6 @@ export class HelloIonicPage {
     });
 }
 
-  btnPushClick(){
-    let TIME_IN_MS = 10000;
-    let hideFooterTimeout = setTimeout( () => {
-      this.notification();
-    }, TIME_IN_MS);
-  }
   btnListDevices() {
     this.navCtrl.push(ListPage);
   }
@@ -50,4 +44,12 @@ export class HelloIonicPage {
      });
     });
   }
+  i = 1;
+  doorClick(){
+    if (this.i % 2 != 0)
+      document.getElementById("homeMidDoor").style.backgroundImage  = "url('/assets/imgs/door-open.jpg')";
+    else
+      document.getElementById("homeMidDoor").style.backgroundImage  = "url('/assets/imgs/door-close.jpg')";
+    this.i ++;
+    }
 }

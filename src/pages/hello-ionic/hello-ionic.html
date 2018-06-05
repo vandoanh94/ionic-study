@@ -3,26 +3,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>SMART HOME</ion-title>
+    <ion-title>SMART HOME CONTROL</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content class="my-background" padding>
-
-  <div text-center class="my-background">
-    <h3>Welcome to your</h3>
+<ion-content class="background" padding>
+  <div class="home-top-image"></div>
+  <div class="home-mid-control">
+    <div class="home-mid-control-img" (click) = "btnListDevices()"></div>
+    <div id="homeMidDoor" class="home-mid-door-img" (click)="doorClick()"></div>
   </div>
-  
-
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-
-  <button ion-button (click) = "btnListDevices()">List Devices</button>
 
  <!--  <h2>API</h2>
   <ion-item>
