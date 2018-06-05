@@ -15,23 +15,6 @@ export class ListPage {
       this.storage.get('items').then((val) => {
         this.items = val;
       });
-    /* this.items = [
-      {
-        'title': 'Angular',
-        'icon': 'angular',
-        'color': '#E63135'
-      },
-      {
-        'title': 'CSS3',
-        'icon': 'css3',
-        'color': '#0CA9EA'
-      },
-      {
-        'title': 'HTML5',
-        'icon': 'html5',
-        'color': '#F46529'
-      },
-    ] */
   }
 
   btnUpdateItems(){
@@ -65,6 +48,18 @@ export class ListPage {
         'icon': 'html5',
         'color': '#F46529'
       });
+      this.storage.set('items',val);
+      this.items = val;
+    });
+  }
+
+  btnDeleteItem(){
+    this.storage.get('items').then((val) => {
+     val.forEach(element => {
+       if(element.title == "HTML5"){
+        val.splice(val.indexOf(element), 1);
+       }
+     });
       this.storage.set('items',val);
       this.items = val;
     });
