@@ -1,17 +1,15 @@
 page-list {
 
 }
-ion-row{
-    text-align: center;
-}
+
 .background-ls-devices{
     background-image : url('/assets/imgs/bg-list-devices.jpg');
     background-size: 100% 100%;
 }
 
-.button {
+.ls-devices-div {
     position: relative;
-    background-color: #3a3f3b;
+    background-color: transparent;
     border-style: solid;
     border-width: thin;
     border-color: #1bfa39;
@@ -25,27 +23,9 @@ ion-row{
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.button:after {
-    content: "";
-    background-color: #3a3f3b;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s
-}
-
-.button:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s
-}
-.btn-light{
+.btn-icon-size{
     font-size: 3.0em;
 }

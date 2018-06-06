@@ -1,59 +1,29 @@
 page-hello-ionic {
 
 }
-.background{
+
+.background-home{
     background-image : url('/assets/imgs/background.jpg');
-    background-size: 100%;
+    background-size: 100% 100%;
 }
-.home-top-image{
-    display: table;
-    margin: 0 auto;
-    width: 80%;
-    height: 30%;
-    border-radius: 15px;
-    background-image : url('/assets/imgs/hometopimage.jpg');
-    background-size: 100%;
-}
-.home-mid-control{
-    margin-top: 50px;
+
+.home-item-div {
+    position: relative;
+    /* background-color: transparent; */
+    border-style: solid;
+    border-color: #1bfa39;
+    color: #FFFFFF;
+    padding: 10px;
     width: 100%;
-    height: 30%;
+    height: 150px;
     text-align: center;
-}
-.home-mid-control-img{
-    width: 40%;
-    height: 100%;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 15px;
-    background-image : url('/assets/imgs/homecontrol.jpg');
-    background-size: 100% 100%;
-    box-shadow: 0 9px #999;
-}
-.home-mid-control-img:hover {background-color: #3e8e41}
-
-.home-mid-control-img:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    transition-duration: 2s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.home-mid-door-img{
-    width: 40%;
-    height: 100%;
-    display: inline-block;
-    margin-left: 10px;
-    border-radius: 15px;
-    background-image : url('/assets/imgs/door-close.jpg');
-    background-size: 100% 100%;
-    box-shadow: 0 9px #999;
-}
-.home-mid-door-img:hover {
-    background-color: #3e8e41;
-    background-image : url('/assets/imgs/door-close.jpg');}
-
-.home-mid-door-img:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.img-responsive{
+    height: 80%;
 }

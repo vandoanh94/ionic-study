@@ -28,12 +28,16 @@ export class ListPage {
     ];
   }
 
-  clickLight(){
-    if((<HTMLElement>document.querySelector('#btnLight')).style.color!="red"){
-      (<HTMLElement>document.querySelector('#btnLight')).style.color="red";
+  clickLight(event){
+    let id = "#" + event.currentTarget.id;
+    if((<HTMLElement>document.querySelector(id)).style.color!="red"){
+      (<HTMLElement>document.querySelector(id)).style.color="red";
+      (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
     }
-    else
-      (<HTMLElement>document.querySelector('#btnLight')).style.color="black";
+    else{
+      (<HTMLElement>document.querySelector(id)).style.color="white";
+      (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
+    }
   }
 
 }

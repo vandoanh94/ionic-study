@@ -25,7 +25,7 @@ export class HelloIonicPage {
     });
 }
 
-  btnListDevices() {
+  btnHomeRemote() {
     this.navCtrl.push(ListPage);
   }
 
@@ -44,12 +44,12 @@ export class HelloIonicPage {
      });
     });
   }
-  i = 1;
-  doorClick(){
-    if (this.i % 2 != 0)
-      document.getElementById("homeMidDoor").style.backgroundImage  = "url('/assets/imgs/door-open.jpg')";
+  clickDoorControl(){
+    let doorSrc = (<HTMLElement>document.querySelector('#doorControl')).src;
+    let doorState = doorSrc.search("open");
+    if(doorState>0)
+      (<HTMLElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-close.png";
     else
-      document.getElementById("homeMidDoor").style.backgroundImage  = "url('/assets/imgs/door-close.jpg')";
-    this.i ++;
-    }
+      (<HTMLElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-open.png";
+  }
 }
