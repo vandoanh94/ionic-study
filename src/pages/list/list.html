@@ -8,11 +8,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <!-- <ion-list>
     <li ion-item *ngFor="let item of items">
       <ion-icon [name]="'logo-' + item.icon" [ngStyle]="{'color': item.color}" item-start></ion-icon>
       <ion-label>{{item.title}}</ion-label>
       <ion-toggle checked="false"></ion-toggle>
     </li>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="btn-device" col-5 (click)="clickLight()">
+        <ion-icon class="btn-device-icon-light" name="sunny" isActive="true"></ion-icon>
+        <p>Light</p>
+      </ion-col>
+      <ion-col class="btn-device" col-5 text-center> <ion-icon name="sunny"></ion-icon></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="btn-device" col-5 text-center> <ion-icon name="sunny"></ion-icon></ion-col>
+      <ion-col class="btn-device" col-5 text-center> <ion-icon name="sunny"></ion-icon></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="btn-device" col-5 text-center> <ion-icon name="sunny"></ion-icon></ion-col>
+      <ion-col class="btn-device" col-5 text-center> <ion-icon name="sunny"></ion-icon></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
