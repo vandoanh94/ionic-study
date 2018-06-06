@@ -7,6 +7,10 @@ page-hello-ionic {
     background-size: 100% 100%;
 }
 
+.smart-home-icon{
+    width: 100%;
+    height: 150px;
+}
 .home-item-div {
     position: relative;
     /* background-color: transparent; */
@@ -26,4 +30,13 @@ page-hello-ionic {
 
 .img-responsive{
     height: 80%;
+}
+
+.home-top{
+    height: 50%;
+    text-align: center;
+}
+
+.home-top-img{
+    height: 100%;
 }

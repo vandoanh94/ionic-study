@@ -38,12 +38,12 @@ export class ListPage {
     });
 
     let id = "#" + event.currentTarget.id;
-    if((<HTMLElement>document.querySelector(id)).style.color!="red"){
-      (<HTMLElement>document.querySelector(id)).style.color="red";
+    if((<HTMLElement>document.querySelector(id)).style.color!="yellow"){
+      (<HTMLElement>document.querySelector(id)).style.color="yellow";
       (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
     }
     else{
-      (<HTMLElement>document.querySelector(id)).style.color="white";
+      (<HTMLElement>document.querySelector(id)).style.color="#a3a2a2";
       (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
     }
   }
