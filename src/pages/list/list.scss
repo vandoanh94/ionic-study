@@ -1,9 +1,23 @@
 page-list {
 
 }
+.background-ls-devices{
+    background-image : url('/assets/imgs/bg-list-devices.jpg');
+    background-size: 100% 100%;
+}
 .btn-device-icon-light {
     font-size: 40px;
 }
+.btn-device-light{
+    height:80px;
+    margin: 10px;
+    background-color: red;
+    border-radius: 15px;
+    text-align:center;
+    border: 2px solid rgb(243, 47, 80);
+    opacity: 0.5;
+}
+
 .btn-device{
     height:80px;
     margin: 10px;
