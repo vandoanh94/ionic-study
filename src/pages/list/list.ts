@@ -29,10 +29,11 @@ export class ListPage {
   }
 
   clickLight(){
-    if((<HTMLElement>document.querySelector('#btnLight')).style.color!="red")
+    if((<HTMLElement>document.querySelector('#btnLight')).style.color!="red"){
       (<HTMLElement>document.querySelector('#btnLight')).style.color="red";
+    }
     else
-    (<HTMLElement>document.querySelector('#btnLight')).style.color="black";
+      (<HTMLElement>document.querySelector('#btnLight')).style.color="black";
   }
 
 }
