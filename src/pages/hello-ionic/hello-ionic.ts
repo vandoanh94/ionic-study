@@ -45,11 +45,12 @@ export class HelloIonicPage {
     });
   }
   clickDoorControl(){
-    let doorSrc = (<HTMLElement>document.querySelector('#doorControl')).src;
+    let doorSrc = (<HTMLImageElement>document.querySelector('#doorControl')).src;
     let doorState = doorSrc.search("open");
     if(doorState>0)
-      (<HTMLElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-close.png";
+      (<HTMLImageElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-close.png";
     else
-      (<HTMLElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-open.png";
-  }
+      (<HTMLImageElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-open.png";
+  
+    }
 }
