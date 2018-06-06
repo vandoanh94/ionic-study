@@ -5,6 +5,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { RemoteService } from '../../providers/remote-service/remote-service';
 import { Observable} from 'rxjs/Rx';
 import { ListPage } from '../list/list';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-hello-ionic',
@@ -14,7 +15,7 @@ export class HelloIonicPage {
   light = "null";
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
-  public navCtrl: NavController) {
+  public navCtrl: NavController, public storage: Storage) {
     Observable.interval(5000).subscribe(x => {
       this.getLightState();
     });
@@ -22,6 +23,8 @@ export class HelloIonicPage {
   getLightState(){
     this.remoteService.getLightState().subscribe((data)=>{
         this.light = data.last_value;
+        this.storage.set('light',this.light);
+        console.log("storagelight-set",this.light);
     });
 }
 
