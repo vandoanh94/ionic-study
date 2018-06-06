@@ -12,13 +12,16 @@ import 'rxjs/add/operator/catch';
 */
 @Injectable()
 export class RemoteService {
-  getApiUrl : string = "https://io.adafruit.com/api/v2/vandoanh94/feeds/light";
   constructor(public http: Http) {
-    console.log('Hello RemoteServiceProvider Provider');
   }
-  getLightState() {
-    return  this.http.get(this.getApiUrl)
+  getLightState(getApiUrl) {
+    return  this.http.get(getApiUrl)
             .do((res : Response ) => console.log(res.json()))
             .map((res : Response ) => res.json());
+  }
+
+  postLightState(getApiUrl,state) {
+    let body ={"value" : state};
+    return  this.http.post(getApiUrl,body).subscribe(res => console.log(res.json()));
   }
 }

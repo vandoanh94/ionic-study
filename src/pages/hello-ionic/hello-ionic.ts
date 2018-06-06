@@ -12,21 +12,22 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'hello-ionic.html'
 })
 export class HelloIonicPage {
+  getApiUrl : string = "https://io.adafruit.com/api/v2/vandoanh94/feeds/light";
   light = "null";
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController, public storage: Storage) {
-    Observable.interval(5000).subscribe(x => {
+    Observable.interval(2000).subscribe(x => {
       this.getLightState();
     });
   }
   getLightState(){
-    this.remoteService.getLightState().subscribe((data)=>{
+    this.remoteService.getLightState(this.getApiUrl).subscribe((data)=>{
         this.light = data.last_value;
         this.storage.set('light',this.light);
         console.log("storagelight-set",this.light);
     });
-}
+  }
 
   btnHomeRemote() {
     this.navCtrl.push(ListPage);
