@@ -14,14 +14,14 @@ import 'rxjs/add/operator/catch';
 export class RemoteService {
   constructor(public http: Http) {
   }
-  getLightState(getApiUrl) {
-    return  this.http.get(getApiUrl)
+  getApiUrl = "https://iot-rest-api.firebaseio.com/devices.json";
+  getLightState() {
+    return  this.http.get(this.getApiUrl)
             .do((res : Response ) => console.log(res.json()))
             .map((res : Response ) => res.json());
   }
 
-  postLightState(getApiUrl,state) {
-    let body ={"value" : state};
-    return  this.http.post(getApiUrl,body).subscribe(res => console.log(res.json()));
+  postLightState(body) {
+    return  this.http.put(this.getApiUrl,body).subscribe(res => console.log(res.json()));
   }
 }

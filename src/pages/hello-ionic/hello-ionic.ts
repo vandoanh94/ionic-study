@@ -12,18 +12,17 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'hello-ionic.html'
 })
 export class HelloIonicPage {
-  getApiUrl : string = "https://io.adafruit.com/api/v2/vandoanh94/feeds/light";
   light = "null";
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController, public storage: Storage) {
-    Observable.interval(2000).subscribe(x => {
+    Observable.interval().subscribe(x => {
       this.getLightState();
     });
   }
   getLightState(){
-    this.remoteService.getLightState(this.getApiUrl).subscribe((data)=>{
-        this.light = data.last_value;
+    this.remoteService.getLightState().subscribe((data)=>{
+        this.light = data.light;
         this.storage.set('light',this.light);
         console.log("storagelight-set",this.light);
     });
