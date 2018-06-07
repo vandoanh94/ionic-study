@@ -3,39 +3,50 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { RemoteService } from '../../providers/remote-service/remote-service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  body = {
-    light:"",
-    fan:"",
-  };
   constructor(public navCtrl: NavController, public navParams: NavParams,private remoteService : RemoteService,
     public storage: Storage) {
+      Observable.interval(5000).subscribe(x => {
+        this.storage.get('devices').then((val) => {
+          if(val.fireWarning.value=="on"){
+            let id = "#fireWarning";
+            (<HTMLElement>document.querySelector(id)).style.display="block";
+          }
+          if(val.trespassWarning.value=="on"){
+            let id = "#fireWarning";
+            (<HTMLElement>document.querySelector(id)).style.display="block";
+          }
+        });  
+      });
   
   }
 
   clickLight(event){
-    let id = "#" + event.currentTarget.id;
-    
-    this.changeState(id);
+    let id = event.currentTarget.id;
+    this.changeState(event.currentTarget.id);
   }
 
-  changeState(id){
+  changeState(eid){
+    let id = "#" + eid;
+    let device = eid;
+    let value;
     if( (<HTMLElement>document.querySelector(id)).style.color!="yellow"){
       (<HTMLElement>document.querySelector(id)).style.color="yellow";
       (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
-      this.body.light = "on";
+      value = "on";
     }
     else{
       (<HTMLElement>document.querySelector(id)).style.color="#a3a2a2";
       (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
-      this.body.light = "off";
+      value = "off";
     }
-    this.remoteService.postLightState(this.body);
+    this.remoteService.postLightState(device,value);
   }
 
   clickWarning(event){

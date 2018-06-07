@@ -15,13 +15,16 @@ export class RemoteService {
   constructor(public http: Http) {
   }
   getApiUrl = "https://iot-rest-api.firebaseio.com/devices.json";
+  putApiUrl = "https://iot-rest-api.firebaseio.com/devices/";
   getLightState() {
     return  this.http.get(this.getApiUrl)
-            .do((res : Response ) => console.log(res.json()))
             .map((res : Response ) => res.json());
   }
 
-  postLightState(body) {
-    return  this.http.put(this.getApiUrl,body).subscribe(res => console.log(res.json()));
+  postLightState(device,val) {
+    let body = {
+      value:val
+    };
+    return  this.http.put(this.putApiUrl+device+".json",body).subscribe(res => console.log(res.json()));
   }
 }

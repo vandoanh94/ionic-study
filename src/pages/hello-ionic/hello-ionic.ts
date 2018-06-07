@@ -12,7 +12,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'hello-ionic.html'
 })
 export class HelloIonicPage {
-  light = "null";
+  devices ;
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController, public storage: Storage) {
@@ -22,9 +22,9 @@ export class HelloIonicPage {
   }
   getLightState(){
     this.remoteService.getLightState().subscribe((data)=>{
-        this.light = data.light;
-        this.storage.set('light',this.light);
-        console.log("storagelight-set",this.light);
+        this.devices = data;
+        this.storage.set('devices',this.devices);
+        console.log("devices",data);
     });
   }
 
