@@ -16,15 +16,14 @@ export class HelloIonicPage {
   constructor(private localNotifications:LocalNotifications, private platform:Platform,
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController, public storage: Storage) {
-    Observable.interval().subscribe(x => {
+    Observable.interval(1000).subscribe(x => {
       this.getLightState();
     });
   }
   getLightState(){
     this.remoteService.getLightState().subscribe((data)=>{
         this.devices = data;
-        this.storage.set('devices',this.devices);
-        console.log("devices",data);
+        this.storage.set('devices',data);
     });
   }
 

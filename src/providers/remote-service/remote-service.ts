@@ -21,7 +21,7 @@ export class RemoteService {
             .map((res : Response ) => res.json());
   }
 
-  postLightState(device,val) {
+  putDeviceState(device,val) {
     let body = {
       value:val
     };

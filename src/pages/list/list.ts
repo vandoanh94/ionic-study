@@ -10,21 +10,9 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'list.html'
 })
 export class ListPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private remoteService : RemoteService,
     public storage: Storage) {
-      Observable.interval(5000).subscribe(x => {
-        this.storage.get('devices').then((val) => {
-          if(val.fireWarning.value=="on"){
-            let id = "#fireWarning";
-            (<HTMLElement>document.querySelector(id)).style.display="block";
-          }
-          if(val.trespassWarning.value=="on"){
-            let id = "#fireWarning";
-            (<HTMLElement>document.querySelector(id)).style.display="block";
-          }
-        });  
-      });
-  
   }
 
   clickLight(event){
@@ -46,12 +34,14 @@ export class ListPage {
       (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
       value = "off";
     }
-    this.remoteService.postLightState(device,value);
+    this.remoteService.putDeviceState(device,value);
   }
 
   clickWarning(event){
+    let value ="off";
     let id = "#" + event.currentTarget.id;
     (<HTMLElement>document.querySelector(id)).style.display="none";
+    this.remoteService.putDeviceState(event.currentTarget.id,value);
   }
 
 }
