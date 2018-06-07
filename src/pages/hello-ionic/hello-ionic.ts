@@ -17,13 +17,24 @@ export class HelloIonicPage {
   private vibration:Vibration,private remoteService : RemoteService,
   public navCtrl: NavController, public storage: Storage) {
     Observable.interval(1000).subscribe(x => {
-      this.getLightState();
+      this.getDevicesState();
     });
   }
-  getLightState(){
-    this.remoteService.getLightState().subscribe((data)=>{
+  getDevicesState(){
+    this.remoteService.getDevicesState().subscribe((data)=>{
         this.devices = data;
         this.storage.set('devices',data);
+        if(data.door.value == "close" && (<HTMLImageElement>document.querySelector('#door'))!=null){
+          (<HTMLImageElement>document.querySelector('#door')).src = "assets/imgs/home-item-icon-door-close.png";
+        }
+        else{
+          (<HTMLImageElement>document.querySelector('#door')).src = "assets/imgs/home-item-icon-door-open.png";
+        }
+        
+        if(data.fireWarning.value == "on"){
+          this.notification();
+        }
+        
     });
   }
 
@@ -47,12 +58,16 @@ export class HelloIonicPage {
     });
   }
   clickDoorControl(){
-    let doorSrc = (<HTMLImageElement>document.querySelector('#doorControl')).src;
-    let doorState = doorSrc.search("open");
-    if(doorState>0)
-      (<HTMLImageElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-close.png";
-    else
-      (<HTMLImageElement>document.querySelector('#doorControl')).src = "/assets/imgs/home-item-icon-door-open.png";
-  
+    let device = "door";
+    let value;
+    if(this.devices.door.value == "close"){
+      value = "open";
     }
+    else{
+      value = "close";
+    }
+    
+    this.remoteService.putDeviceState(device,value);  
+  }
+    
 }

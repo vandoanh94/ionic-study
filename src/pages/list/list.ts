@@ -10,38 +10,100 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'list.html'
 })
 export class ListPage {
-
+  private devices;
   constructor(public navCtrl: NavController, public navParams: NavParams,private remoteService : RemoteService,
     public storage: Storage) {
+      Observable.interval().subscribe(x => {
+        this.storage.get('devices').then((val) => {
+          this.devices = val;
+          if((<HTMLElement>document.querySelector("#fireWarning"))!=null){
+            if(val.fireWarning.value == "on"){
+              let id = "#fireWarning";
+              (<HTMLElement>document.querySelector(id)).style.display="block";
+            }
+            else{
+              let id = "#fireWarning";
+              (<HTMLElement>document.querySelector(id)).style.display="none";
+            }
+  
+            if(val.trespassWarning.value == "on"){
+              let id = "#trespassWarning";
+              (<HTMLElement>document.querySelector(id)).style.display="block";
+            }
+            else{
+              let id = "#trespassWarning";
+              (<HTMLElement>document.querySelector(id)).style.display="none";
+            }
+  
+            if(val.light.value == "on"){
+              let id = "#light";
+              (<HTMLElement>document.querySelector(id)).style.color="yellow";
+              (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
+            }
+            else{
+              let id = "#light";
+              (<HTMLElement>document.querySelector(id)).style.color="#a3a2a2";
+              (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
+            }
+  
+            if(val.fan.value == "on"){
+              let id = "#fan";
+              (<HTMLElement>document.querySelector(id)).style.color="yellow";
+              (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
+            }
+            else{
+              let id = "#fan";
+              (<HTMLElement>document.querySelector(id)).style.color="#a3a2a2";
+              (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
+            }
+          }
+          
+        });
+  
+      });
   }
 
-  clickLight(event){
+  clickBtn(event){
     let id = event.currentTarget.id;
     this.changeState(event.currentTarget.id);
   }
 
-  changeState(eid){
-    let id = "#" + eid;
-    let device = eid;
+  changeState(id){
+    let device = id;
     let value;
-    if( (<HTMLElement>document.querySelector(id)).style.color!="yellow"){
-      (<HTMLElement>document.querySelector(id)).style.color="yellow";
-      (<HTMLElement>document.querySelector(id)).style.backgroundColor="rgba(255, 214, 173, 0.3)";
-      value = "on";
+    if(device == "light"){
+      if(this.devices.light.value == "on"){
+        value = "off";
+      }
+      else{
+        value = "on";
+      }
     }
-    else{
-      (<HTMLElement>document.querySelector(id)).style.color="#a3a2a2";
-      (<HTMLElement>document.querySelector(id)).style.backgroundColor="transparent";
-      value = "off";
+    /* if(device == "fan"){
+      if(this.devices.fan.value == "on"){
+        value = "off";
+      }
+      else{
+        value = "on";
+      }
     }
+    if(device == "fireWarning"){
+      if(this.devices.fireWarning.value == "on"){
+        value = "off";
+      }
+      else{
+        value = "on";
+      }
+    }
+    if(device == "trespassWarning"){
+      if(this.devices.trespassWarning.value == "on"){
+        value = "off";
+      }
+      else{
+        value = "on";
+      }
+    } */
     this.remoteService.putDeviceState(device,value);
-  }
-
-  clickWarning(event){
-    let value ="off";
-    let id = "#" + event.currentTarget.id;
-    (<HTMLElement>document.querySelector(id)).style.display="none";
-    this.remoteService.putDeviceState(event.currentTarget.id,value);
   }
 
 }

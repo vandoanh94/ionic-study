@@ -16,7 +16,7 @@ export class RemoteService {
   }
   getApiUrl = "https://iot-rest-api.firebaseio.com/devices.json";
   putApiUrl = "https://iot-rest-api.firebaseio.com/devices/";
-  getLightState() {
+  getDevicesState() {
     return  this.http.get(this.getApiUrl)
             .map((res : Response ) => res.json());
   }
